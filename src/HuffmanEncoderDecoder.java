@@ -17,12 +17,21 @@ import java.util.Scanner;
  */
 
 /**
- * This class will preform hoffman codding and decoding in 3 steps:
- * 1.Preform analysis of the data of the file and keep amount of each data junk.
+ * Compress function stages :
+ * 1.Preform analysis of the data of the file and keep amount of each data frequencies.
  * 2.Create a mini-heap,and insert all of the data into the heap.
  * 3.Build a hoffman-tree from the mini heap.
- * LAST STEP:
- * 4.Output the compressed file and the keymap of the values.
+ * 4.Export the tree object as a key file for the decompress function.
+ * 5.Write a Bitset object as the compress file.
+ * 4.Output the compressed file as a Bitset object.
+ *
+ * Decompress function steps:
+ * 1.Import the compress file (Bitset object)
+ * 2.Import the key file (Tree object )
+ * 3.Read from the Bitset object and go through the tree
+ * and write the decompress file as a byte array
+ * 4.Export the decompress file
+ * 5.Delete key object in the user system
  */
 public class HuffmanEncoderDecoder implements Compressor {
 
