@@ -241,7 +241,7 @@ class MinHeap {
         //output the tree object for decompress
         ArrayListObject treeKey = tree;
 
-        String basePath = "C:\\Users\\eyald\\IdeaProjects\\Compression\\src";
+        String basePath = "C:\\Users\\eyald\\Desktop";
         String outputKey = basePath + "\\MyKey";
         try {
             FileOutputStream fileOutKey =

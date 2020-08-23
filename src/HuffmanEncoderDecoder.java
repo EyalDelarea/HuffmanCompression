@@ -8,6 +8,7 @@ import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
 /**
  * Assignment 1
  * Submitted by:
@@ -30,23 +31,14 @@ public class HuffmanEncoderDecoder implements Compressor {
     static int bitSetIndex = 0;
     static String currentFileType = null;
 
-    public HuffmanEncoderDecoder() {
-
-        // TODO Auto-generated constructor stub
-    }
-
-
     public void Compress(String[] input_names, String[] output_names) {
 
-        Scanner reader = new Scanner(System.in);
-        System.out.println("choose file by array index");
-        int inputStringIndex = reader.nextInt();
-        currentFileType = getFileSuffix(input_names[inputStringIndex]);
-        System.out.println("File suffix : "+currentFileType);
+        currentFileType = getFileSuffix(input_names[0]);
+        System.out.println("File suffix : " + currentFileType);
 
         byte[] fileContent = null;
         try {
-            fileContent = Files.readAllBytes(Paths.get(input_names[inputStringIndex]));
+            fileContent = Files.readAllBytes(Paths.get(input_names[0]));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,7 +78,7 @@ public class HuffmanEncoderDecoder implements Compressor {
         //Crate BitSet object
 
         BitSet bitset = new BitSet();
-        BitSet tempByte ;
+        BitSet tempByte;
 
         //write Coding to Bitset to compressed file
 
@@ -196,11 +188,9 @@ public class HuffmanEncoderDecoder implements Compressor {
         boolean temp;
         ArrayListObject current = tree;
 
-        for (int i = 0; i < bitSetIndex; i++) {
-
+        for (int i = 0; i < compressedBits.length(); i++) {
             while (current.isFather()) {
                 temp = compressedBits.get(i); // bool value
-
                 if (temp) {
                     current = current.getRight();
                 } else {
@@ -209,12 +199,9 @@ public class HuffmanEncoderDecoder implements Compressor {
                 if (current.isFather()) {
                     i++;
                 }
-
-
             }
             result.add(current.getValue());
             current = tree;
-
         }  //end for loop i++
         return result;
     }
